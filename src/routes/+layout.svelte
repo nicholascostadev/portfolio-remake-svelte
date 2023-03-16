@@ -1,6 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Icon from '@iconify/svelte';
+	import Icon from 'svelte-icons-pack/Icon.svelte';
+	import BlogIcon from 'svelte-icons-pack/vsc/VscPreview';
+	import WorkIcon from 'svelte-icons-pack/vsc/VscBriefcase';
+	import SunIcon from 'svelte-icons-pack/bs/BsSun';
+	import MoonIcon from 'svelte-icons-pack/bs/BsMoon';
+	import ProjectsIcon from 'svelte-icons-pack/bs/BsGridFill';
+	import TwitterIcon from 'svelte-icons-pack/vsc/VscTwitter';
+	import LinkedInIcon from 'svelte-icons-pack/bs/BsLinkedin';
+	import GithubIcon from 'svelte-icons-pack/vsc/VscGithubInverted';
+
 	import '../app.css';
 
 	let ready = false;
@@ -47,13 +56,13 @@
 			links: [
 				{
 					title: 'Work Experience',
-					icon: 'briefcase-variant',
+					icon: WorkIcon,
 					href: '#work',
 					isExternal: false
 				},
 				{
 					title: 'Projects',
-					icon: 'view-grid',
+					icon: ProjectsIcon,
 					href: '#projects',
 					isExternal: false
 				}
@@ -64,7 +73,7 @@
 			links: [
 				{
 					title: 'Blog',
-					icon: 'format-list-text',
+					icon: BlogIcon,
 					href: '/blog',
 					isExternal: false
 				}
@@ -75,19 +84,19 @@
 			links: [
 				{
 					title: 'Twitter',
-					icon: 'twitter',
+					icon: TwitterIcon,
 					href: 'https://twitter.com/nicholascosta04',
 					isExternal: true
 				},
 				{
 					title: 'GitHub',
-					icon: 'github',
+					icon: GithubIcon,
 					href: 'https://github.com/nicholascostadev',
 					isExternal: true
 				},
 				{
 					title: 'LinkedIn',
-					icon: 'linkedin',
+					icon: LinkedInIcon,
 					href: 'https://www.linkedin.com/in/nicholascostadev/',
 					isExternal: true
 				}
@@ -115,7 +124,7 @@
 		{#each menuData as menu}
 			<div class="w-full">
 				<h2
-					class="pointer-events-none mb-1 w-full select-none border-b border-b-slate-200 pb-1 text-center text-slate-600 dark:border-b-slate-600 dark:text-slate-400 xl:text-left"
+					class="pointer-events-none mb-1 w-full select-none border-b border-b-slate-200 pb-1 text-slate-600 dark:border-b-slate-600 dark:text-slate-400 xl:text-left"
 				>
 					{menu.title}
 				</h2>
@@ -123,9 +132,9 @@
 					<a
 						href={link.href}
 						target={link.isExternal ? '_blank' : undefined}
-						class="flex w-auto items-center justify-center gap-2 rounded-md py-2 px-2 text-slate-800  transition-colors dark:text-slate-100  xl:w-full xl:items-center xl:justify-start xl:px-3  hover:bg-slate-100 dark:hover:bg-slate-800"
+						class="flex w-auto items-center justify-start gap-2 rounded-md py-2 px-2 text-slate-800  transition-colors dark:text-slate-100  xl:w-full xl:items-center xl:justify-start xl:px-3  hover:bg-slate-100 dark:hover:bg-slate-800"
 					>
-						<Icon icon="mdi:{link.icon}" width={20} height={20} />
+						<Icon src={link.icon} size="16" />
 						{link.title}
 					</a>
 				{/each}
@@ -134,30 +143,29 @@
 		{#if ready}
 			<div class="w-full">
 				<h2
-					class="pointer-events-none mb-1 w-full select-none border-b border-b-slate-200 pb-1 text-center text-slate-600 dark:border-b-slate-600 dark:text-slate-400 xl:text-left"
+					class="pointer-events-none mb-1 w-full select-none border-b border-b-slate-200 pb-1 text-slate-600 dark:border-b-slate-600 dark:text-slate-400 xl:text-left"
 				>
 					Tema
 				</h2>
 				<button
 					on:click={toggleTheme}
-					class="flex w-auto group items-center justify-center gap-2 rounded-md py-2 px-2 text-slate-800  transition-colors dark:text-slate-100  xl:w-full xl:items-center xl:justify-center xl:px-3  hover:bg-slate-100 dark:hover:bg-slate-800"
+					class="text-sm flex group items-center w-full justify-center gap-2 rounded-md py-2 px-2 text-slate-800  transition-colors dark:text-slate-100  xl:w-full xl:items-center xl:justify-center xl:px-3  hover:bg-slate-100 dark:hover:bg-slate-800"
 				>
 					<kbd
-						class="text-sm px-2 py-1 bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 rounded-md transition-colors"
+						class="px-2 py-1 bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 rounded-md transition-colors"
 					>
 						Ctrl
 					</kbd>
 					+
 					<kbd
-						class="text-sm px-2 py-1 bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 rounded-md transition-colors"
+						class="px-2 py-1 bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 rounded-md transition-colors"
 					>
 						k
 					</kbd>
-					or Switch to
 					{#if currentTheme === 'dark'}
-						<Icon icon="mdi:white-balance-sunny" />
+						<Icon src={SunIcon} size="16" />
 					{:else}
-						<Icon icon="mdi:weather-night" />
+						<Icon src={MoonIcon} size="16" />
 					{/if}
 				</button>
 			</div>
